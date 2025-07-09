@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<meta name="_csrf" th:content="${_csrf.token}"/>
+		<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+		아파트 실거래가를 검색할 수 있는 페이지 홈 화면 입니다.
+	</head>
+	<body>
+		아래 내용을 클릭해서 원하는 내용을 검색하세요.
+		<form name="basicInquiry" action="/apartmentRealPrice" method="POST">
+			<input type="text" name="sellDate"/>
+			<input type="text" name="sellRegion">
+			<input type="submit" value="검색">
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" id="csrfToken" />
+		</form>
+		
+		<button id="searchBtn">ajax검색</button>
+		
+		<button id="searchMemBtn">멤버검색</button>
+		
+		<p id="result" th:if="${apartRealPrice}" th:text="'실거래가: ' + ${apartRealPrice}"></p>
+		<p id="result" th:if!="${apartRealPrice}" th:text="'실거래가: '"></p>
+		
+		<form th:action="@{/logout}" method="post">
+		    <button type="submit">로그아웃</button>
+		</form>
+	</body>
+	
+	<script>
+		$(document).ready(()=>{
+			let token = $("meta[name='_csrf']").attr("content");
+		    let header = $("meta[name='_csrf_header']").attr("content");
+
+			//ajaxSend는 제이쿼리의 글로벌 함수이다.
+		    $(document).ajaxSend(function(e, xhr, options) {
+				/*
+				e: 이벤트 객체, xhr: XMLHttpRequest 객체 (요청에 헤더를 추가할 수 있음), options: AJAX 요청에 대한 설정 정보
+				*/
+		        xhr.setRequestHeader(header, token);
+		    });
+				
+			console.log("ready complete!!")
+			$("#searchBtn").click(()=>{
+				
+				let request = {};
+				request.sellDate = $("input[name=sellDate]").val();
+				request.sellRegion = $("input[name=sellRegion]").val();
+				
+				$.ajax({
+					url: "/apartmentRealPriceAjax",
+					type: "POST",
+					data: JSON.stringify(request),
+					dataType: "json",
+					success: (response)=>{
+						console.log(response);
+						if(response.code == 200){
+							$("#result").text("실거래가 : " + response.data.apartRealPrice);
+						}else {
+							$("#result").text("실거래가 : 호출 실패");
+						}
+					},
+					error: (e)=>{
+						console.log(e)
+					}
+				});
+			});
+			$("#searchMemBtn").click(()=>{
+				
+				let request = {};
+				request.sellDate = $("input[name=sellDate]").val();
+				request.sellRegion = $("input[name=sellRegion]").val();
+				
+				$.ajax({
+					url: "/memberInfoAjax",
+					type: "POST",
+					data: JSON.stringify(request),
+					dataType: "json",
+					success: (response)=>{
+						console.log(response);
+						$("#result").text("실거래가 : " + response.memberInfo);
+					},
+					error: (e)=>{
+						console.log(e)
+					}
+				});
+			});
+		});
+	</script>
+</html>

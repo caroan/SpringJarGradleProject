@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.home.HomeMapper">
+    
+    <select id="getMemberNameInfo" resultType="java.lang.String" parameterType="MbrInfo">
+        select userName from first_table where userId = #{userId}
+    </select>
+    
+    <select id="getMemberAllInfo" resultType="MbrInfo" parameterType="MbrInfo">
+        select * from first_table where userId = #{userId}
+    </select>
+    
+    <update id="updateMemberInfo" parameterType="MbrInfo">
+    	update first_table 
+    	set
+    		userId = #{userId}
+    		, userName = #{userName}
+    		, password = #{password}
+    		, userEmail = #{userEmail}
+    		, userPhoneNum = #{userPhoneNum}
+    	where
+    		userId = #{userId}
+    </update>
+    
+    <insert id="insertMemberInfo" parameterType="MbrInfo">
+    	insert into first_table (
+			userId,
+			userName,
+			password,
+			userEmail,
+			userPhoneNum,
+			createAt
+		)
+		values(
+			#{userId},
+			#{userName},
+			#{password},
+			#{userEmail},
+			#{userPhoneNum},
+			now()
+		)
+    </insert>
+    
+    <delete id="deleteMemberInfo" parameterType="MbrInfo">
+    	delete from first_table
+    	where userId = #{userId}
+    </delete>
+
+</mapper>

@@ -1,0 +1,203 @@
+폴더 PATH의 목록입니다.
+볼륨 일련 번호는 4032-5433입니다.
+C:.
+│  .classpath
+│  .gitattributes
+│  .gitignore
+│  .project
+│  build.gradle.kts
+│  gradlew
+│  gradlew.bat
+│  HELP.md
+│  settings.gradle.kts
+│  spy.log
+│  structure.txt
+│  
+├─.gradle
+│  ├─8.14.2
+│  │  │  gc.properties
+│  │  │  
+│  │  ├─checksums
+│  │  │      checksums.lock
+│  │  │      md5-checksums.bin
+│  │  │      sha1-checksums.bin
+│  │  │      
+│  │  ├─executionHistory
+│  │  │      executionHistory.lock
+│  │  │      
+│  │  ├─expanded
+│  │  ├─fileChanges
+│  │  │      last-build.bin
+│  │  │      
+│  │  ├─fileHashes
+│  │  │      fileHashes.lock
+│  │  │      
+│  │  └─vcsMetadata
+│  ├─buildOutputCleanup
+│  │      buildOutputCleanup.lock
+│  │      cache.properties
+│  │      
+│  ├─kotlin
+│  │  └─errors
+│  └─vcs-1
+│          gc.properties
+│          
+├─.settings
+│      org.eclipse.buildship.core.prefs
+│      org.eclipse.jdt.core.prefs
+│      org.springframework.ide.eclipse.prefs
+│      
+├─bin
+│  ├─main
+│  │  │  application.properties
+│  │  │  p6spy.properties
+│  │  │  
+│  │  ├─com
+│  │  │  └─example
+│  │  │      └─demo
+│  │  │          │  MyGradleJarProjectApplication.class
+│  │  │          │  
+│  │  │          ├─config
+│  │  │          │      SecurityConfig.class
+│  │  │          │      WebClientConfig.class
+│  │  │          │      
+│  │  │          ├─controller
+│  │  │          │  └─home
+│  │  │          │          HomeController.class
+│  │  │          │          RestHomeController.class
+│  │  │          │          
+│  │  │          ├─mapper
+│  │  │          │  └─home
+│  │  │          │          HomeMapper.class
+│  │  │          │          
+│  │  │          ├─Repository
+│  │  │          │  └─home
+│  │  │          │      │  HomeRepository.class
+│  │  │          │      │  
+│  │  │          │      └─impl
+│  │  │          │              HomeRepository.class
+│  │  │          │              
+│  │  │          ├─security
+│  │  │          │      MyUserDetailService.class
+│  │  │          │      
+│  │  │          ├─service
+│  │  │          │  └─home
+│  │  │          │      │  HomeService.class
+│  │  │          │      │  
+│  │  │          │      └─impl
+│  │  │          │              HomeServiceImpl$1.class
+│  │  │          │              HomeServiceImpl.class
+│  │  │          │              
+│  │  │          └─vo
+│  │  │              ├─common
+│  │  │              │      ApiResponse$ApiResponseBuilder.class
+│  │  │              │      ApiResponse.class
+│  │  │              │      
+│  │  │              └─home
+│  │  │                      ApartInfo.class
+│  │  │                      MbrInfo.class
+│  │  │                      
+│  │  ├─mapper
+│  │  │  └─home
+│  │  │          HomeMapper.xml
+│  │  │          
+│  │  └─templates
+│  │      └─view
+│  │          ├─home
+│  │          │      home.html
+│  │          │      
+│  │          └─login
+│  │                  login.html
+│  │                  
+│  └─test
+│      └─com
+│          └─example
+│              └─demo
+│                  │  MyGradleJarProjectApplicationTests.class
+│                  │  
+│                  └─home
+│                          HomeControllerTest.class
+│                          
+├─build
+│  └─reports
+│      └─problems
+│              problems-report.html
+│              
+├─gradle
+│  └─wrapper
+│          gradle-wrapper.jar
+│          gradle-wrapper.properties
+│          
+└─src
+    ├─main
+    │  ├─java
+    │  │  └─com
+    │  │      └─example
+    │  │          └─demo
+    │  │              │  MyGradleJarProjectApplication.java
+    │  │              │  
+    │  │              ├─config
+    │  │              │      SecurityConfig.java
+    │  │              │      WebClientConfig.java
+    │  │              │      
+    │  │              ├─controller
+    │  │              │  └─home
+    │  │              │          HomeController.java
+    │  │              │          RestHomeController.java
+    │  │              │          
+    │  │              ├─mapper
+    │  │              │  └─home
+    │  │              │          HomeMapper.java
+    │  │              │          
+    │  │              ├─Repository
+    │  │              │  └─home
+    │  │              │      │  HomeRepository.java
+    │  │              │      │  
+    │  │              │      └─impl
+    │  │              │              HomeRepository.java
+    │  │              │              
+    │  │              ├─security
+    │  │              │      MyUserDetailService.java
+    │  │              │      
+    │  │              ├─service
+    │  │              │  └─home
+    │  │              │      │  HomeService.java
+    │  │              │      │  
+    │  │              │      └─impl
+    │  │              │              HomeServiceImpl.java
+    │  │              │              
+    │  │              └─vo
+    │  │                  ├─common
+    │  │                  │      ApiResponse.java
+    │  │                  │      
+    │  │                  └─home
+    │  │                          ApartInfo.java
+    │  │                          MbrInfo.java
+    │  │                          
+    │  └─resources
+    │      │  application.properties
+    │      │  p6spy.properties
+    │      │  
+    │      ├─mapper
+    │      │  └─home
+    │      │          HomeMapper.xml
+    │      │          
+    │      ├─static
+    │      └─templates
+    │          └─view
+    │              ├─home
+    │              │      home.html
+    │              │      
+    │              └─login
+    │                      login.html
+    │                      
+    └─test
+        └─java
+            └─com
+                └─example
+                    └─demo
+                        │  MyGradleJarProjectApplicationTests.java
+                        │  
+                        └─home
+                                HomeControllerTest.java
+                                
