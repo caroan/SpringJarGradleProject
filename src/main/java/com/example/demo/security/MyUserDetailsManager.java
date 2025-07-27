@@ -33,10 +33,8 @@ public class MyUserDetailsManager implements UserDetailsManager {
 		MbrInfo result = homeRepository.getMemberAllInfo(mbrInfo);
 		
 		if(result != null) {
-//			return User.withUsername(result.getUserId())
-//					.password(result.getUserPassword())
-//					.roles("USER")
-//					.build();
+			result.setUserPassword( passwordEncoder.encode(result.getUserPassword()) );
+			
 			return new MyUserDetails(result);
 		}
 		throw new UsernameNotFoundException("유저의 이름을 찾을 수 없습니다.");
