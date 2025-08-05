@@ -1,5 +1,6 @@
 package com.example.demo.controller.home;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -15,10 +16,5 @@ public class MemberController {
 	public String getCreateMemberPage() {
 		String modifyMemberPage = "/view/member/modify";
 		return modifyMemberPage;
-	}
-	
-	@PostMapping
-	public Map<String, Object> createUser(MbrInfo mbrInfo){
-		return null;
 	}
 }
