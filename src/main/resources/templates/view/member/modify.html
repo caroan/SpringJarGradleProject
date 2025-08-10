@@ -1,29 +1,75 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<meta name="_csrf" th:content="${_csrf.token}"/>
 	<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>신규 유저 가입</title>
 </head>
 <body>
-<h2>회원 가입</h2>
-<form th:action="@{/registMember}" method="post">
-	<input type="text" name="userid" placeholder="아이디" value = ""/>
-    <input type="text" name="username" placeholder="유저명" value = ""/>
-    <input type="text" name="userpassword" placeholder="비밀번호" value = ""/>
-	<input type="text" name="useremail" placeholder="이메일" value = ""/>
-	<input type="text" name="userphonenum" placeholder="전화번호" value = ""/>
-    <button type="submit">회원가입</button>
-</form>
+	<script>
+		var formData = {};
+		$(document).ready(()=>{
+			
+			var token = $("meta[name='_csrf']").attr("content");
+			var header = $("meta[name='_csrf_header']").attr("content");
 
-<!-- 로그인 실패 시 메시지 출력 -->
-<div th:if="${param.error}">
-    <p style="color:red;">아이디 또는 비밀번호가 올바르지 않습니다.</p>
-</div>
-
-<!-- 로그아웃 성공 시 메시지 출력 -->
-<div th:if="${param.logout}">
-    <p style="color:green;">로그아웃 되었습니다.</p>
-</div>
+			// jQuery의 ajaxSetup을 이용하여 모든 AJAX 요청에 CSRF 헤더 추가
+			if (token && header) {
+			    $.ajaxSetup({
+			        beforeSend: function(xhr) {
+			            // POST, PUT, DELETE와 같은 안전하지 않은(unsafe) 메서드에만 헤더 추가
+			            if (!this.crossDomain && (this.type.toUpperCase() !== 'GET')) {
+			                xhr.setRequestHeader(header, token);
+			            }
+			        }
+			    });
+			}
+			
+			$("#registmemberBtn").click(()=>{
+				//var formData = {};
+				$("#reigstMemberForm").serializeArray().forEach(function(itm){
+					formData[itm.name] = itm.value;
+				});
+				
+				var jsonData = JSON.stringify(formData);
+				
+				var token = $("meta[name='_csrf']").attr("content");
+				var header = $("meta[name='_csrf_header']").attr("content");
+				
+				$.ajax({
+					type:"POST",
+					url:"/registMember",
+					contentType: "application/json",
+					data:jsonData,
+					success : function(res){
+						console.log("response :: ", res)
+					},
+					error : function(xhr, status, error){
+						console.log(xhr, status, error);
+					}
+				});
+			});
+		});
+	</script>
+	<h2>회원 가입</h2>
+	<form id="reigstMemberForm">
+		<input type="text" name="userid" placeholder="아이디" value = "TEST01"/>
+	    <input type="text" name="username" placeholder="유저명" value = "User01"/>
+	    <input type="text" name="userpassword" placeholder="비밀번호" value = "qwe123!@#"/>
+		<input type="text" name="useremail" placeholder="이메일" value = "devcaroan@naver.com"/>
+		<input type="text" name="userphonenum" placeholder="전화번호" value = "010-4138-2134"/>
+	</form>
+	<button id="registmemberBtn">회원가입</button>
+	
+	<!-- 로그인 실패 시 메시지 출력 -->
+	<div th:if="${param.error}">
+	    <p style="color:red;">아이디 또는 비밀번호가 올바르지 않습니다.</p>
+	</div>
+	
+	<!-- 로그아웃 성공 시 메시지 출력 -->
+	<div th:if="${param.logout}">
+	    <p style="color:green;">로그아웃 되었습니다.</p>
+	</div>
 </body>
 </html>

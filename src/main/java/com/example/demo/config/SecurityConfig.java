@@ -22,7 +22,7 @@ public class SecurityConfig {
 	public SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception{
 		http
 		.authorizeHttpRequests(authz -> authz 
-			.requestMatchers("/login", "/css/**", "/js/**").permitAll()// 인증 없이 접근 허용
+			.requestMatchers("/login", "/createMember", "/registMember", "/css/**", "/js/**").permitAll()// 인증 없이 접근 허용
 			.anyRequest().authenticated()// 나머지 요청은 인증 필요
 		)//authorizeHttpRequests() : 어떤 URL이 인증 없이 접근 가능한지 지정
 		.formLogin(form -> form
