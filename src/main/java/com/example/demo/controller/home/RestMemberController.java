@@ -18,6 +18,9 @@ public class RestMemberController {
 	@PostMapping("/registMember")
 	public Map<String, Object> createUser(@RequestBody MbrInfo mbrInfo){
 		Map<String, Object> result = new HashMap<String, Object>();
+		System.out.println("mbrInfo --> " + mbrInfo.toString());
+		
+		
 		
 		result.put("result", "success");
 		

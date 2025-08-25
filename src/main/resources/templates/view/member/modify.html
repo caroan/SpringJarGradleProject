@@ -37,6 +37,8 @@
 				var token = $("meta[name='_csrf']").attr("content");
 				var header = $("meta[name='_csrf_header']").attr("content");
 				
+				console.log("jsonData :: " ,  jsonData);
+				
 				$.ajax({
 					type:"POST",
 					url:"/registMember",
@@ -54,11 +56,11 @@
 	</script>
 	<h2>회원 가입</h2>
 	<form id="reigstMemberForm">
-		<input type="text" name="userid" placeholder="아이디" value = "TEST01"/>
-	    <input type="text" name="username" placeholder="유저명" value = "User01"/>
-	    <input type="text" name="userpassword" placeholder="비밀번호" value = "qwe123!@#"/>
-		<input type="text" name="useremail" placeholder="이메일" value = "devcaroan@naver.com"/>
-		<input type="text" name="userphonenum" placeholder="전화번호" value = "010-4138-2134"/>
+		<input type="text" name="userId" placeholder="아이디" value = "TEST01"/>
+	    <input type="text" name="userName" placeholder="유저명" value = "User01"/>
+	    <input type="text" name="userPassword" placeholder="비밀번호" value = "qwe123!@#"/>
+		<input type="text" name="userEmail" placeholder="이메일" value = "devcaroan@naver.com"/>
+		<input type="text" name="userPhoneNum" placeholder="전화번호" value = "010-4138-2134"/>
 	</form>
 	<button id="registmemberBtn">회원가입</button>
 	
